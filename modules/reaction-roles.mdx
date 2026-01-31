@@ -1,0 +1,34 @@
+---
+title: "Reaction Roles"
+---
+
+<Note>This module requires the **Manage Roles** permission.</Note>
+
+The reaction roles module lets you set up role prompts to allow users to self-assign roles. Before using this, consider setting up Discord's built-in
+onboarding instead. While it does not work for all applications, the interface is a lot easier because it is built in to the client and allows members to
+immediately see the roles reflected on a preview of their profile.
+
+Despite the name, reactions are not the recommended way to set up role prompts. With Discord components (buttons and dropdowns), members will receive a
+response confirming the changes or informing them of any errors, which allows for a more interactive interface. It is also much easier for users to understand
+the options since button/dropdown labels are available.
+
+## Adding to Existing Messages
+
+You may wish to choose to use reactions despite our recommendations. If you want to add the reactions to an existing message (it can be any message such as an
+externally configured webhook message, though keep in mind that you can customize the prompt message sent by Daedalus as well), you can enable the **add
+reactions to existing message** toggle, which makes Daedalus add the reactions to the targeted message (enter its ID) instead of sending one itself. This can
+be especially useful for retrofitting Daedalus onto existing prompt messages without disturbing message order within the channel.
+
+Note that this setting can only be changed when creating a new prompt.
+
+## Assignment Types
+
+The assignment type determines the possible role configurations:
+
+- `normal` -- members can add/remove any of the roles available on the prompt
+- `unique` -- members can only choose exactly zero or one of the roles
+- `add-only` -- members can only add roles available on the prompt and cannot remove them later (useful for verification/agreement roles)
+- `remove-only` -- members can only remove roles available on the prompt (useful for verification/agreement configurations with inverted/lockout roles)
+    - note that these roles will not be added by default -- you may consider the [<Icon icon="bolt" /> Autoroles](/modules/autoroles) module for automatically
+      assigning them to members when they join
+- `locked` -- members can only choose exactly one of the roles and cannot remove the role or change their selection later

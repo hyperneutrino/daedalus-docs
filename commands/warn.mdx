@@ -1,0 +1,20 @@
+---
+title: "/warn"
+---
+
+<Note>By default, this command requires the **Moderate Members** permission.</Note>
+
+Warn a member through DMs. This fails if they are not in the server unless `silent` is set to `true`.
+
+## Syntax
+
+```
+/warn <user> <reason> [private-notes] [silent]
+```
+
+| Parameter       | Information                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `user`          | The user to warn.                                                                                                                      |
+| `reason`        | The reason to log and send to the user.                                                                                                |
+| `private-notes` | A private reason to log (not sent to the user).                                                                                        |
+| `silent`        | If true, the user will not be notified of their warn (this is useful for logging warnings that were communicated through other means). |

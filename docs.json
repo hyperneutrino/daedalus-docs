@@ -1,140 +1,163 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Daedalus",
-  "colors": {
-    "primary": "#009688",
-    "light": "#11c0af",
-    "dark": "#0c6d63"
-  },
-  "favicon": "https://daedalusbot.xyz/favicon.ico",
-  "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "icon": "book-open-cover",
-          "href": "https://mintlify.com/docs"
+    "$schema": "https://mintlify.com/docs.json",
+    "theme": "mint",
+    "name": "Daedalus",
+    "colors": {
+        "primary": "#009688",
+        "light": "#11c0af",
+        "dark": "#0c6d63"
+    },
+    "favicon": "https://daedalusbot.xyz/favicon.ico",
+    "navigation": {
+        "global": {
+            "anchors": [
+                {
+                    "anchor": "Main Site",
+                    "icon": "screwdriver-wrench",
+                    "href": "https://daedalusbot.xyz"
+                }
+            ]
         },
-        {
-          "anchor": "Blog",
-          "icon": "newspaper",
-          "href": "https://mintlify.com/blog"
+        "tabs": [
+            {
+                "tab": "Guides",
+                "groups": [
+                    {
+                        "group": "Getting started",
+                        "pages": ["index", "terms", "privacy"]
+                    },
+                    {
+                        "group": "Documentation",
+                        "pages": ["permissions", "dev-mode", "custom-messages", "premium", "cohosting"]
+                    }
+                ]
+            },
+            {
+                "tab": "Module List",
+                "groups": [
+                    {
+                        "group": "Modules",
+                        "pages": [
+                            "modules/index",
+                            "modules/logging",
+                            "modules/welcome",
+                            "modules/supporter-announcements",
+                            "modules/xp",
+                            "modules/reaction-roles",
+                            "modules/moderation",
+                            "modules/starboard",
+                            "modules/automod",
+                            "modules/account-filter",
+                            "modules/sticky-roles",
+                            "modules/autoroles",
+                            "modules/custom-roles",
+                            "modules/stats-channels",
+                            "modules/autoresponder"
+                        ]
+                    },
+                    {
+                        "group": "Commands",
+                        "pages": [
+                            {
+                                "group": "XP",
+                                "pages": [
+                                    "commands/top",
+                                    "commands/rank",
+                                    { "group": "/xp", "pages": ["commands/xp/import", "commands/xp/reset-user", "commands/xp/reset-all"] }
+                                ]
+                            },
+                            {
+                                "group": "Moderation",
+                                "pages": [
+                                    "commands/ban",
+                                    "commands/kick",
+                                    "commands/mute",
+                                    "commands/timeout",
+                                    "commands/warn",
+                                    "commands/note",
+                                    "commands/unban",
+                                    "commands/unmute",
+                                    "commands/mod-view",
+                                    {
+                                        "group": "/massban",
+                                        "pages": [
+                                            "commands/massban/list",
+                                            "commands/massban/url",
+                                            "commands/massban/file",
+                                            "commands/massban/import",
+                                            "commands/massban/export"
+                                        ]
+                                    },
+                                    "commands/view-history",
+                                    "commands/toggle-history-entry",
+                                    "commands/slowmode",
+                                    "commands/purge"
+                                ]
+                            },
+                            {
+                                "group": "Account Filter",
+                                "pages": [
+                                    {
+                                        "group": "/account-filter",
+                                        "pages": ["commands/account-filter/exempt", "commands/account-filter/reset", "commands/account-filter/reset-all"]
+                                    }
+                                ]
+                            },
+                            { "group": "Custom Roles", "pages": ["commands/custom-role"] }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "logo": { "dark": "/logo/dark.svg", "light": "/logo/light.svg" },
+    "navbar": {
+        "links": [
+            {
+                "label": "Support",
+                "href": "https://discord.gg/7TRKfSK7EU"
+            }
+        ],
+        "primary": {
+            "type": "button",
+            "label": "Dashboard",
+            "href": "https://dashboard.mintlify.com"
         }
-      ]
     },
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "logo": "/logo/light.svg",
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "https://discord.gg/7TRKfSK7EU"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "github": "https://github.com/hyperneutrino",
-      "discord": "https://discord.gg/7TRKfSK7EU"
-    }
-  },
-  "description": "Daedalus, the modern all-purpose Discord bot",
-  "background": {
-    "color": {
-      "light": "#EEEEEE",
-      "dark": "#080808"
+    "footer": {
+        "socials": {
+            "github": "https://github.com/hyperneutrino",
+            "discord": "https://discord.gg/7TRKfSK7EU"
+        }
     },
-    "decoration": "grid"
-  },
-  "appearance": {
-    "default": "system"
-  },
-  "fonts": {
-    "family": "Fira Sans",
-    "weight": 300
-  },
-  "errors": {
-    "404": {
-      "title": "404 Not Found",
-      "description": "The URL you entered does not point to a valid page."
+    "description": "Daedalus, the modern all-purpose Discord bot",
+    "background": {
+        "color": {
+            "light": "#FFFFFF",
+            "dark": "#000000"
+        },
+        "decoration": "windows"
+    },
+    "appearance": {
+        "default": "system"
+    },
+    "fonts": {
+        "family": "Fira Sans",
+        "weight": 300
+    },
+    "errors": {
+        "404": {
+            "title": "404 Not Found",
+            "description": "The URL you entered does not point to a valid page."
+        }
+    },
+    "interaction": {
+        "drilldown": true
+    },
+    "metadata": {
+        "timestamp": true
+    },
+    "seo": {
+        "indexing": "all"
     }
-  },
-  "interaction": {
-    "drilldown": true
-  },
-  "metadata": {
-    "timestamp": true
-  },
-  "seo": {
-    "indexing": "all"
-  }
 }

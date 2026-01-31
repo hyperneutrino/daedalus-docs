@@ -1,0 +1,23 @@
+---
+title: "/massban file"
+---
+
+<Note>
+    By default, this command requires the **Manage Server** and **Ban Members** permissions. This command requires the bot to have the **Ban Members**
+    permission.
+</Note>
+
+Massban users by uploading a file with a list of user IDs. If configured, this requires either a set number of approvals or someone with a bypass role to skip
+approval. Users will not be notified.
+
+## Syntax
+
+```
+/massban file <file> [reason] [purge-duration]
+```
+
+| Parameter        | Information                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------- |
+| `file`           | A file containing a comma/space-separated list of user IDs to ban.                      |
+| `reason`         | The reason to log.                                                                      |
+| `purge-duration` | Purge the specified period of chat history from this user if applicable (up to 7 days). |

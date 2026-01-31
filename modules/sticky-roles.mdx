@@ -1,0 +1,17 @@
+---
+title: "Sticky Roles"
+---
+
+<Note>This module requires the **Manage Roles** permission.</Note>
+
+The sticky roles module lets you save members' roles when they leave the server and re-apply them automatically when they join.
+
+Note that this is not necessary for the mute role, which is already automatically applied if the user joins while the bot recalls that they are muted.
+
+It is recommended to exclude/not include the following roles:
+
+- the mute role -- if it is included, then if a user leaves the server while muted, becomes unmuted, and rejoins, they will receive the mute role again
+- roles added/removed by XP level-up rewards -- if it is included, then XP changes while the user is gone (which can happen by resetting XP or importing XP
+  from another source) may not reflect properly
+- roles added by the account filter -- if they are included, then if a user joins while their account is new, receives the new member roles, leaves, and
+  rejoins after their account is older, they will still have the new member roles

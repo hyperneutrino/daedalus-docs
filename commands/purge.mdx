@@ -1,0 +1,33 @@
+---
+title: "/purge"
+---
+
+<Note>
+    By default, this command requires the **Manage Server** and **Manage Messages** permissions. This command requires the bot to have the **Manage Messages**
+    permission.
+</Note>
+
+Bulk-delete messages from the current channel.
+
+## Syntax
+
+```
+/purge [count] [first] [last] [types] [match] [case-sensitive]
+```
+
+You must specify `count`, `first`, and `last` in one of the following configurations:
+
+- `<count>` -- select the last `<count>` messages
+- `<first>` -- select messages starting from `<first>` and ending at the most recent message
+- `<count> <first>` -- select up to `<count>` messages starting from `<first>`
+- `<count> <last>` -- select up to `<count>` messages ending with `<last>` as the most recent
+- `<first> <last>` -- select messages between `<first>` and `<last>` (inclusive)
+
+| Parameter        | Information                                                                                                                                                                                                                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `count`          | The number of messages to select.                                                                                                                                                                                                                                                              |
+| `first`          | The first/earliest message to select.                                                                                                                                                                                                                                                          |
+| `last`           | The last/most recent message to select.                                                                                                                                                                                                                                                        |
+| `types`          | The types of authors from whom to delete messages: <ul><li>`user accounts` -- only delete messages sent by regular user accounts</li><li>`bot accounts` -- only delete messages sent by bot accounts (i.e. not webhooks)</li><li>`webhooks` -- only delete messages sent by webhooks</li></ul> |
+| `match`          | If specified, only delete messages matching the specified text.                                                                                                                                                                                                                                |
+| `case-sensitive` | If true, `match` is case-sensitive (this has no effect if `match` is not set).                                                                                                                                                                                                                 |

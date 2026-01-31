@@ -1,0 +1,22 @@
+---
+title: "/mute"
+---
+
+<Note>By default, this command requires the **Moderate Members** permission. This command requires the bot to have the **Manage Roles** permission.</Note>
+
+Mute a member by assigning them the mute role (must be configured in your server settings). If they are not in the server, the mute will be recorded and they
+will receive the mute role upon joining.
+
+## Syntax
+
+```
+/mute <user> [reason] [private-notes] [duration] [silent]
+```
+
+| Parameter       | Information                                                                                                                 |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `user`          | The user to mute.                                                                                                           |
+| `reason`        | The reason to log and send to the user.                                                                                     |
+| `private-notes` | A private reason to log (not sent to the user).                                                                             |
+| `duration`      | If specified, the user will be unmuted after this duration. Muting them again with a different duration will override this. |
+| `silent`        | If true, the user will not be notified of their mute.                                                                       |

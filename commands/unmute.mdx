@@ -1,0 +1,21 @@
+---
+title: "/unmute"
+---
+
+<Note>By default, this command requires the **Moderate Members** permission. This command requires the bot to have the **Manage Roles** permission.</Note>
+
+Unmute a member by removing the mute role (must be configured in your server settings). This fails if they are not muted. If they are not in the server, the
+recorded mute will be removed and they will no longer receive the mute role upon joining.
+
+## Syntax
+
+```
+/unmute <user> [reason] [private-notes] [silent]
+```
+
+| Parameter       | Information                                             |
+| --------------- | ------------------------------------------------------- |
+| `user`          | The user to unmute.                                     |
+| `reason`        | The reason to log and send to the user.                 |
+| `private-notes` | A private reason to log (not sent to the user).         |
+| `silent`        | If true, the user will not be notified of their unmute. |

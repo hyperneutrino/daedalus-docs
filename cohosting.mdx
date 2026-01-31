@@ -1,0 +1,63 @@
+---
+title: "Cohosting"
+---
+
+<Note>
+    <p>
+        We do not officially recommend running another bot through the same client as a Daedalus instance and do not accept responsibility for any issues or
+        damage caused by doing so as it is impossible for us to guard against it.
+    </p>
+    <p>
+        That said, we have created this guide for those who wish to accept the risk and build things with this possibility. Following this guide is not a
+        guarantee that problems will be avoided, but it gives you some known pitfalls to avoid and some guidance on steps that have been taken to make cohosting
+        more possible.
+    </p>
+</Note>
+
+<Danger>
+    You must make it apparent that you are cohosting and the bot is not solely controlled by Daedalus. Failure to do so, or attempting to impersonate Daedalus
+    or misrepresent messages from a cohosting process as Daedalus' may result in revocation of custom client access or termination of Daedalus access entirely.
+</Danger>
+
+## Application Commands
+
+<Danger>
+    It is critical that your process ignores any commands not owned by it. If it responds to the interaction in any way, it could cause Daedalus to become
+    unable to respond properly afterwards.
+</Danger>
+
+Daedalus loads its application commands (slash commands and context menu commands) on each startup. In order to enable cohosting, the bot will preserve any
+commands that were found and not recognized at startup. However, we cannot guarantee that your commands will not be deleted at some point during a cleanup or
+deployment.
+
+Note that deleting Daedalus commands through cohosting will not work as the bot will simply recreate them during startup. Instead, the **Premium** tab in
+server settings lets you disable commands you do not wish to use.
+
+Never create a command with the same name as an existing Daedalus command. Daedalus identifies what to do with commands based on the name and skips processing
+on any unrecognized command names instead of rejecting them to enable cohosting. If you use a command with the same name as a Daedalus command, it will be
+processed and result in a rejection message, unexpected error, or potentially problematic undefined behavior, and either way, the interaction will likely not
+be successfully processed by your bot unless it has lower latency than Daedalus.
+
+Note that the above only applies to enabled commands. If you disable a command in the **Premium** tab, you can then use custom commands with the same; just
+make sure you remove the conflict before re-enabling the command if you wish to do so in the future.
+
+If you are using guild-specific commands, be careful to avoid conflicts with your [<Icon icon="bolt" /> Autoresponder](/modules/autoresponder) tags (if you
+have any). Just like with global commands, the bot will attempt to preserve unrecognized commands to enable cohosting, but again, we cannot guarantee that this
+will work perfectly, so your commands may end up being overwritten at some point.
+
+## Other Interactions
+
+<Danger>
+    It is critical that your process ignores any interactions owned by Daedalus for the same reason as with commands. It is safest to simply ignore any
+    interactions whose custom ID starts with `:` or `#`.
+</Danger>
+
+Daedalus uses the following format for its interactions' custom IDs:
+
+- `:path/to/handler:[user]:[args]:[args...]` -- most components and modals are represented like this to allow them to be used at any time without needing a
+  temporary listener
+- `#/name` -- some components are represented like this if they require a temporary listener
+
+You should avoid using anything that matches either of these formats and ignore any components that match them to avoid interference. The global handler
+ignores any interactions whose custom ID does not start with `:` and if the path does not match `/^[a-z\/\-]$/i`, so you should start your custom IDs with
+anything else. Temporary listeners will only apply to specific messages (e.g. the approval loop for the massban confirmation prompt).

@@ -1,0 +1,21 @@
+---
+title: "/massban export"
+---
+
+<Note>
+    By default, this command requires the **Manage Server** and **Ban Members** permissions. This command requires the bot to have the **Ban Members**
+    permission (this is because it is part of `/massban`, not because it actually bans members).
+</Note>
+
+Create a massban export by providing a list of user IDs. This will save the user list and output an export key which can be sent to others to be used via
+`/massban import`.
+
+## Syntax
+
+```
+/massban export <users>
+```
+
+| Parameter | Information                                      |
+| --------- | ------------------------------------------------ |
+| `users`   | A comma/space-separated list of user IDs to ban. |

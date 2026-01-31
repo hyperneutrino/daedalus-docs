@@ -1,0 +1,19 @@
+---
+title: "/account-filter exempt"
+---
+
+<Note>By default, this command requires the **Manage Server** permission.</Note>
+
+Make a user exempt from the account filter. This stops Daedalus from applying your account filter action to them. Note that this is only particularly useful
+if the action is set to kick, as otherwise you can simply unmute them, remove their timeout, or remove the new member role(s). This fails if the user's account
+is already exempt or if it is more than 28 days old (the maximum threshold for the account filter).
+
+## Syntax
+
+```
+/account-filter exempt <user>
+```
+
+| Parameter | Information              |
+| --------- | ------------------------ |
+| `user`    | The user to make exempt. |

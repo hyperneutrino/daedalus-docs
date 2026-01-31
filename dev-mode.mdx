@@ -1,0 +1,17 @@
+---
+title: "Dev Mode"
+---
+
+<p>
+    At the top of each module's configuration page, you will see a switch for entering developer mode (import/export mode). You can also use
+    <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> to switch between the two modes.
+</p>
+
+In dev mode, you can edit the configuration directly via [YAML](https://yaml.org/). You can copy-paste this configuration to other servers, though you will
+need to update any IDs (e.g. channels and roles). The intention of this feature is to make sharing configurations easier, so feel free to publicize YAML
+templates using this or create third-party tools for generating configurations.
+
+When copy-pasting configurations with UUIDs (internal IDs used to track things like reaction role prompts, automod rules, etc.), you do not need to replace the
+UUIDs. Although they are called UUIDs (universally unique identifiers), it is not necessary for them to be unique between servers. If you wish to clone an
+object, you will need to generate a new UUID. You can do this by switching off of dev mode, opening the cloned object, and clicking "fix UUID error". You can
+also insert an arbitrary UUID in the new object. It does not need to be random as long as it is unique, but it does need to be a valid UUIDv4.

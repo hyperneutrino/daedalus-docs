@@ -1,0 +1,33 @@
+---
+title: "Permissions"
+---
+
+This is a high-level guide on configuring permissions optimally for Daedalus. Note that this is not a comprehensive step-by-step tutorial; it is expected that
+you have a baseline understanding of how to set permissions on roles and permission overwrites on channels as well as have a basic understanding of the
+permissions required for basic actions (e.g. the bot needs to be able to view and send messages in your welcome channel).
+
+The following permissions are requested by default. These do not open the possibility for abuse and are generally granted to all of your members, so it is
+safe to give these to the bot by default. You may choose to restrict some or all of these, but we do not guarantee that all features will work correctly with
+any of these disabled, even if it does not seem apparent that it is needed. We do not use permissions that are not strictly needed, so if you notice a feature
+not working due to a permission that you believe should not be required, please let us know and we will fix it.
+
+- **View Channels** -- This is required for things like logging, automod, etc. You may wish to make channels such as your admin channel invisible to the bot if
+  you do not want features to apply within it anyway. Slash commands do not require the bot to have this permission in the channel in which they are being
+  used.
+- **Send Messages** and **Send Messages in Threads** -- These are required for any features that involve responding to users, sending logging messages, etc.
+  This permission is also not required for slash commands to work.
+- **Attach Files** -- This is required for logging events that involve files or uploading text as files when message length exceeds the Discord limit. Denying
+  this permission may break certain features.
+- **Read Message History** -- This is required for the purge command and reaction-based reaction roles (reaction role prompts that use components, i.e. buttons
+  and dropdowns, do not require this). Although most features do not require this, this is a safe permission that is generally granted to all members.
+- **Add Reactions** -- This is required for reaction-based reaction roles and autoresponder triggers. Although most features do not require this, this is a
+  safe permission that is generally granted to all members.
+
+You can view required elevated permissions in each module/command's information page.
+
+If the dashboard is not letting you set a channel/role in a specific dropdown, it may be because it cannot see the channel, it cannot send messages to the
+channel (for certain fields e.g. logging output channels), or the role is above/equal to the bot's highest role (and therefore cannot be managed). It may also
+be because you cannot send messages to the channel or the role is above/equal to your highest role.
+
+If you have double-checked permissions and a role still does not appear, note that bots cannot manage roles that are considered managed by Discord
+(**@everyone**, the booster role if your server has one, roles granted by purchase of a server subscription/product, and linked roles).

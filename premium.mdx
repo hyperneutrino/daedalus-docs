@@ -1,0 +1,49 @@
+---
+title: "Premium & Custom Clients"
+---
+
+Daedalus Premium and Custom Clients subscriptions are purchased through [Stripe](https://stripe.com). Billing is handled by Stripe and your payment information
+is processed by them, a reputable payment processor. Daedalus never sees your payment information, though your customer name, email, country, and the last four
+digits of your card number (if applicable) are visible through Stripe. This information is never used except when absolutely necessary, e.g. to email you in
+case of payment-related issues.
+
+When you purchase a subscription, you will have the option to choose between annual and monthly billing. Once you pay through Stripe, it should immediately be
+reflected in your account settings. Premium will not be granted to a server; instead, you must provision a key and either give it to a server admin or use it
+yourself.
+
+To activate premium or a custom client, go to your server's settings and redeem it in the **Premium** section. If you receive a premium key from a support
+agent or through a promotion, you can activate it here as well.
+
+## Premium Benefits
+
+|                              | Free    | Premium                 |
+| ---------------------------- | ------- | ----------------------- |
+| Multi-Target Modmail         | &cross; | 5 targets               |
+| Multi-Target Tickets         | &cross; | 10 targets (per prompt) |
+| Supporter Announcements      | 3       | 25                      |
+| Reaction Role Prompts        | 5       | 20                      |
+| `/purge` Message Count Limit | 200     | 2000                    |
+| Automod Rules                | 10      | 50                      |
+| Stats Channels               | 5       | 25                      |
+| Autoresponder Triggers       | 10      | 50                      |
+| Autoresponder Tag Commands   | &cross; | 5                       |
+| Ticket Prompts               | 3       | 10                      |
+| Reddit Feeds                 | 3       | 10                      |
+| Count-Up Channels            | 3       | 10                      |
+
+## Using Custom Clients
+
+The custom clients feature allows you to run Daedalus through a custom bot account. This lets you control the bot's avatar, banner, about me, etc. Here's what
+you need to consider before using custom clients.
+
+- Modmail behavior is improved when using custom clients. Normally, members need to DM **Daedalus#1821** and need to select the server or confirm which server
+  they want to message each time, and having multiple open modmail threads can get confusing. With a custom client, they only need to confirm their message
+  each time instead.
+- Reaction role prompts, ticket prompts, and any other interactive messages sent by the bot must be set up again when switching clients since bots cannot see
+  or respond to interactions between users and other bots' messages. You can simply go to the relevant module's settings and click "Save", which validates the
+  prompts and sends them if they are missing.
+- You should kick any clients you are not using as they pollute the command list (when you switch to a custom client, kick **Daedalus#1821**, and if you switch
+  back, kick the custom client unless you plan to overwrite its commands or repurpose it yourself).
+- We don't officially recommend running another bot through the same client as a Daedalus custom client as it can cause interference and we cannot take
+  responsibility for any issues or damage caused as we cannot guard against it. If you wish to do so anyway, please read the [cohosting guide](/cohosting) and
+  make sure you are following the [Terms of Service](/terms).

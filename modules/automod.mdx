@@ -1,0 +1,84 @@
+---
+title: "Automod"
+---
+
+<Note>
+    This module requires the following permissions depending on how it's configured:
+    <ul>
+        <li>**Manage Messages** -- if any rules are set up to delete the offending message(s)</li>
+        <li>**Manage Roles** -- if any rules are set up to mute the author as an additional action</li>
+        <li>**Moderate Members** -- if any rules are set up to time out the author as an additional action</li>
+        <li>**Kick Members** -- if any rules are set up to kick the author as an additional action</li>
+        <li>**Ban Members** -- if any rules are set up to ban the author as an additional action</li>
+    </ul>
+</Note>
+
+The automod module lets you automatically scan new/edited messages and take action against messages that match certain filters.
+
+## Universal Settings
+
+You can mark channels as ignored to stop automod from scanning messages within those channels by default. You can specify per-rule whether or not to disregard
+the default ignored channels.
+
+You can mark roles as ignored to stop automod from scanning messages from users with those roles. You can specify per-rule whether or not to disregard the
+default ignred roles.
+
+You can set a default report channel to which automod actions will be logged. This can be overridden per-rule.
+
+The **interact with webhooks** setting determines whether or not automod should scan webhook messages. If you use services like PluralKit, Tupperbox, Octocon,
+NQN, etc. that allow users to send messages through webhook, you should enable this setting so that members cannot circumvent your automod using those
+services. Note that this is a double-edged sword -- Daedalus cannot determine the reason for a webhook message being sent, so people with ignored roles will
+be unable to send proxied messages.
+
+## Rules
+
+Each rule comes with a match configuration, an action, and restrictions.
+
+### Match Configuration
+
+The following rule types are available:
+
+- `blocked terms` -- detect messages containing forbidden words/phrases
+- `repeated characters` -- detect messages containing the same character repeated too many times in a row
+- `emoji spam` -- detect messages containing too many emoji
+- `ratelimit`<sup>&dagger;</sup> -- detect when a user sends messages too frequently
+- `attachment spam`<sup>&dagger;</sup> -- detect when a user sends files too frequently (optionally also if they send too many files in one message)
+- `sticker spam`<sup>&dagger;</sup> -- detect when a user sends stickers too frequently
+- `link spam`<sup>&dagger;</sup> -- detect when a user sends links too frequently (optionally also if they send too many links in one message)
+- `mention spam`<sup>&dagger;</sup> -- detect when a user sends user/role mentions too frequently, too many mentions in one message, or tries to ping
+  **@everyone** or **@here** without having the requisite permission
+- `invite links` -- detect when a user sends an invite link to a blocked/disallowed server
+- `blocked links` -- detect when a user sends a URL from a blocked domain
+
+<sub>
+    <sup>&dagger;</sup>These rules will match all messages that were part of determining the rate of actions. If the rule is configured to delete the offending
+    message, it will delete all matched messages.
+</sub>
+
+### Actions
+
+Each rule can be configured with the following actions:
+
+- `report to channel` -- if true (default), report to the specified channel
+- `delete message` -- delete the offending message (or for ratelimit rules, all offending messages)
+- `notify author` -- notify the author that their message was flagged (also informs them what other actions were taken)
+- `override report channel` -- send alerts from this rule to the specified channel, or if not set, the default report channel
+- `additional action` -- specify an additional action to do on top of the above (all except "do nothing" are logged to the user's history)
+- `action duration` -- if the additional action is to mute, timeout, or ban, you may (or for timeouts, must) specify the duration of the punishment
+
+### Restrictions
+
+Each rule can be configured with the following match restrictions:
+
+- `disregard default ignored channels` -- treat the universal ignored channels setting as though it were empty (match messages in all channels that aren't
+  ignored by this rule)
+- `disregard default ignored roles` -- treat the universal ignored roles setting as though it were empty (match messages from all users who aren't ignored by
+  this rule)
+- `only watch enabled channels` -- only match messages in channels that are explicitly watched by this rule and ignore channels by default
+- `only watch enabled roles` -- only match messages from users with a role that is explicitly watched by this rule and ignore others by default
+
+Additionally, you can set per-rule ignored/watched channels/roles. If a message is in a watched channel, it will be matched even if the universal setting says
+to ignore that channel. Likewise, if a message is sent by a user with a watched role, it will be matched even if the universal setting says to ignore them
+based on their roles.
+
+However, a message is ignored if it is in a watched channel but from a user with a universally ignored role or vice versa.

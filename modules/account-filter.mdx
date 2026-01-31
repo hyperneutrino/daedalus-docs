@@ -1,0 +1,19 @@
+---
+title: "Account Filter"
+---
+
+<Note>
+    This module requires the following permissions depending on how it's configured:
+    <ul>
+        <li>**Kick Members** -- if the filter is set up to kick members</li>
+        <li>**Manage Roles** -- if the filter is set up to mute or apply a custom set of roles</li>
+        <li>**Moderate Members** -- if the filter is set up to timeout</li>
+    </ul>
+</Note>
+
+The account filter module lets you automatically apply certain restrictions to accounts newer than a certain threshold.
+
+You can set the threshold up to 28 days. If it is set to 0 ("no time"), then no actions will be taken. Actions will neither retroactively apply nor be removed
+when you update these settings.
+
+You can configure Daedalus to automatically kick new accounts or apply a mute, timeout, or other specified role(s) to them upon joining.

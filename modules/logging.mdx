@@ -1,0 +1,51 @@
+---
+title: "Logging"
+---
+
+<Tip>This module does not require any special permissions.</Tip>
+
+The logging module lets you log events/changes in your server.
+
+## Ignored Channels
+
+You can ignore certain channels at the top-level. Any channel-specific events that happen in any of these channels will not be logged no matter what. If you
+want to ignore specific event types, configure the overrides instead.
+
+Some events are not channel-specific and are not subject to this. For example, message deletions are channel-specific but bans are not.
+
+## File-Only Mode
+
+File-only mode only affects logs for message edits and deletions. When this is enabled, message deletions will only be logged if the message contained files
+and only the files (i.e. not the content) will be logged and message edits will only log files being removed from a message.
+
+## Override Logic
+
+When an event occurs, it will recursively look for what to do based on the defined rules. Channel-specific events can be configured with channel-based
+overrides (for example, you can configure message deletions in NSFW channels to be sent to a separate logging channel).
+
+If a match action or the default action is specified for an event, it will follow through with that. For example, setting "do nothing" for admin channels in
+the message deletion event will silence logs for messages being deleted in your admin channels. If the matched action is "default to parent", it will continue
+looking for what to do based on the event category.
+
+You can match events based on whether the channel is in or not in a list of channels, of or not of certain channel types, and is or is not NSFW
+(age-restricted).
+
+You can do the same for event categories. Note that channel-based matches for event categories will be ignored for events that are not channel-specific. For
+example, although the server changes category is defined as channel-based, editing a role is not channel-based, so category channel match rules will not apply.
+
+Finally, you can set match rules for all logging events in the base settings, which will apply if the event-level and category-level rules both returned
+"default to parent". The same note as above applies -- events that are not channel-based that reach this point will simply use the default action.
+
+## Common Configuration
+
+A common configuration will be to have a channel for each logging category and then set the default action for each category to output to that channel.
+
+## Outputting to Webhooks
+
+In most cases, outputting to a webhook is not going to be noticeably different from outputting to a channel. However, there are two important things you can do
+with this.
+
+1. If you set the webhook to a webhook outside of the server, you can have your logging in a different server. Note that you need to put a `!` in front of the
+   URL to confirm that you want to do this (by default, this is not allowed as a safety measure).
+2. Bots and bot-created webhooks can only send emoji from their servers. User-created webhooks are not subject to this restriction, so if you output to a
+   webhook, all emoji will be able to be logged, which can be helpful for message and reaction logging.

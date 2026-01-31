@@ -1,0 +1,19 @@
+---
+title: "Starboard"
+---
+
+<Tip>This module does not require any special permissions.</Tip>
+
+The starboard module features messages that receive enough stars (or another specified reaction).
+
+You can specify a reaction to detect instead of <Icon icon="star" />, a default starboard channel (where starred messages are forwarded), and a
+threshold (the number of users that must react with the specified reaction to mark a message as featured).
+
+You can also set overrides for channels and control their output and threshold. If an override is disabled, then messages in that channel will never be sent
+to a starboard channel (messages in any potential starboard output channel are inherently ignored). The threshold and output channel for a message are
+determined by looking for the override for its channel, then its parent, then so on, and falling back to the global default.
+
+For example, if your **#general** channel has an override threshold of 10 stars and your **General** category has an override output of **#starboard-2**, then
+messages in **#general** will require 10 stars and will be forwarded to **#starboard-2**.
+
+If a message in an NSFW channel would be starred and its output points to a non-NSFW channel, it will be ignored.

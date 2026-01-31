@@ -1,0 +1,21 @@
+---
+title: "/timeout"
+---
+
+<Note>By default, this command requires the **Moderate Members** permission. This command requires the bot to have the **Moderate Members** permission.</Note>
+
+Time out a member using Discord's native timeout feature or remove their existing timeout. This fails if they are not in the server.
+
+## Syntax
+
+```
+/timeout <user> <duration> [reason] [private-notes] [silent]
+```
+
+| Parameter       | Information                                                                                    |
+| --------------- | ---------------------------------------------------------------------------------------------- |
+| `user`          | The user to time out.                                                                          |
+| `duration`      | The duration for which to time out the user (up to 28 days). If 0, removes the user's timeout. |
+| `reason`        | The reason to log and send to the user.                                                        |
+| `private-notes` | A private reason to log (not sent to the user).                                                |
+| `silent`        | If true, the user will not be notified of their timeout/timeout removal.                       |

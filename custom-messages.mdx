@@ -1,0 +1,100 @@
+---
+title: "Custom Messages"
+---
+
+Custom messages allow you to configure dynamic messages to send to users for things such as supporter announcements or welcome messages. They are also used for
+stats channels.
+
+This guide goes over the mechanics of dynamic custom messages, not how to write a good one; that is up to your personal style.
+
+## Basic Format
+
+The basic format for dynamic custom messages is to insert a command block using `{...}`. For example, to mention the user in a welcome message, simply use
+`{mention}`.
+
+Some commands also manipulate other values. For example, `{members}` evaluates to the number of members in the server, so to show "you are the Nth member", you
+can do `{ordinal {members}}`. Here, `ordinal` is a function that accepts a number and outputs the ordinal format ("Nth") for it.
+
+To insert a literal <code>&#123;</code>, just write <code>\\&#123;</code>.
+
+All values are strings (text), numbers, or lists of values. Boolean (yes/no) values are represented as `1` for true and `0` for false.
+
+## Members
+
+If the context targets a server member (e.g. supporter announcements, welcome messages), the following functions are available:
+
+- `{avatar}` -- the member's server-specific avatar if present and their global user avatar otherwise
+- `{nickname}` -- the member's nickname if set and their global display name otherwise
+- `{banner}` -- the member's server-specific banner if present, otherwise their global user banner if present, otherwise `""`
+- `{booster?}` -- whether or not the member is boosting the server
+
+## Members & Users
+
+If the context targets a server member or a user, the following functions are available:
+
+- `{mention}` -- mention the user (note that this only pings in certain contexts)
+- `{display-name}` -- the user's global display name
+- `{username}` -- the user's username (i.e. their handle)
+- `{tag}` -- the user's tag (for user accounts, this is their username; for bots, this is its username and discriminator e.g. `Daedalus#1821`)
+- `{discriminator}` -- the user's discriminator as a string (for user accounts, this is `""`; for bots, this is the four numbers at the end of its tag e.g.
+  `1821` for Daedalus)
+- `{user-banner}` -- the user's banner URL if present and `""` otherwise
+- `{user-avatar}` -- the user's global avatar
+- `{bot?}` -- whether or not the user is a bot account
+
+## Roles
+
+If the context targets a role (e.g. supporter announcements that detect a role), the following functions are available:
+
+- `{role-icon}` -- the role's icon URL
+- `{role-members}` -- the number of members with the role
+- `{role-name}` -- the name of the role
+- `{hoist?}` -- whether or not the role is hoisted (a role is hoisted if its members are displayed separately from other users)
+
+## Guilds
+
+The server is always in context, so the following functions are always available:
+
+- `{server}` -- the server's name
+- `{members}` -- the number of members in the server
+- `{boosts}` -- the number of boosts (not the number of boosting members)
+- `{tier}` -- the boost tier (level) of the server (0, 1, 2, or 3)
+- `{server-icon}` -- the server's icon URL
+- `{server-banner}` -- the server's banner URL
+- `{server-splash}` -- the server's discovery splash image URL
+- `{bots}` -- the number of bots in the server
+- `{humans}` -- the number of non-bot accounts in the server
+- `{boosters}` -- the number of boosting members (not the number of boosts)
+
+## Functions
+
+The following functions are globally available to manipulate the above values. Arguments surrounded by `[]` are optional. `...` means any number of arguments
+may be provided.
+
+- `{countdown x y z}` -- if `x` as a date is in the past, `z`, otherwise `y` formatted as a countdown (`%WDHM%` gets replaced with the remaining time formatted
+  into weeks, days, hours, and minutes, and any combination of `WDHM` are possible, e.g. `%DH%` only shows days and hours)
+- `{? x y [z]}` -- if `x` is true (non-empty string or non-zero number), `y`, otherwise `z` (or `""` if `z` is not defined)
+- `{!= ...}` -- whether or not all provided arguments are unique
+- `{random ...}` -- randomly choose one of the given values (at least one must be provided)
+- `{list ...}` -- create a list from the provided values
+- `{! x}` -- `0` if `x` is true (non-empty string or non-zero number), otherwise `1`
+- `{length x}` -- the length of a list
+- `{ordinal #}` -- the "Nth" form of a number (1st, 2nd, 3rd, etc.) (works for negative numbers)
+- `{join x y}` -- joins a list of strings (`x`) on a string (`y`)
+- `{+ ...}` -- sum the provided values (at least one must be provided)
+- `{- ...}` -- chain subtraction: `{- x y z}` returns `x - y - z` (at least one must be provided)
+- `{* ...}` -- take the product of the provided values (at least one must be provided)
+- `{/ ...}` -- chain division: `{/ x y z}` returns `x / y / z = (x / y) / z` (at least one must be provided)
+- `{\ ...}` -- chain floor division: `{\ 5 2}` returns `2` rather than `2.5` (at least one must be provided)
+- `{# x}` -- the length of a list
+- `{# x ...}` -- index access of a list: `{# x 1 2 3}` returns `x[1][2][3]` (zero-indexed)
+- `{% ...}` -- chain modulo (remainder after division): `{% 7 3}` is `1` (at least one must be provided)
+- `{^ ...}` -- left-to-right chain exponentiation: `{^ x y z}` returns `(x ^ y) ^ z` (at least one must be provided)
+- `{&& ...}` -- logical AND (the first false value if any, the last value if all are true) (at least one must be provided)
+- `{|| ...}` -- logical OR (the first true value if any, the last value if all are false) (at least one must be provided)
+- `{++ ...}` -- concatenate lists together (at least one must be provided)
+- `{= ...}` -- whether or not all provided arguments are equal and at least one argument was provided
+- `{> ...}` -- whether all provided values are in strictly descending order
+- `{>= ...}` -- whether all provided values are in non-ascending order
+- `{< ...}` -- whether all provided values are in strictly ascending order
+- `{<= ...}` -- whether all provided values are in non-descending order

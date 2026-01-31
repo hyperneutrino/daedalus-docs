@@ -1,0 +1,17 @@
+---
+title: "Moderation"
+---
+
+<Tip>This module requires permissions for some of its commands but does not require any special permissions itself.</Tip>
+
+The moderation module includes the usual suite of moderation commands. Refer to the command references. There are some settings that you can configure.
+
+By default, moderation commands are publicly visible (both the confirmation prompt, which can only be confirmed by the original executor, and the follow-up
+notice). You can configure them to be visible only to the user using the command in specific channels or everywhere.
+
+By default, massbans (see `/massban`) only require confirmation from the user executing the command. You can configure an approval threshold, which requires
+approval from the specified number of users who have permission to use `/massban`, and bypass roles, which allow users with any of those roles to bypass the
+approval requirement. Note that the original submitter must confirm the massban regardless of approval count/bypassing.
+
+You can configure the duration for the Daedalus mod view's instant timeout button. This button immediately times out the viewed member for the specified
+duration and allows for quickly shutting down an issue and adding mod notes and determining the correct course of action afterwards.

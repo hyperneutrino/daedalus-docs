@@ -1,0 +1,24 @@
+---
+title: "/ban"
+---
+
+<Note>By default, this command requires the **Ban Members** permission. This command requires the bot to have the **Ban Members** permission.</Note>
+
+Ban a user from the server. If they are not in the server, this will still prevent them from rejoining/joining in the future. If they are already banned, this
+will unban them and re-ban them to purge messages according to the specified purge duration. They will be automatically unbanned after the specified duration
+(if applicable) so long as Daedalus is in the server, even if the Moderation module is disabled.
+
+## Syntax
+
+```
+/ban <user> [reason] [private-notes] [duration] [purge-duration] [silent]
+```
+
+| Parameter        | Information                                                                                                                   |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `user`           | The user to ban.                                                                                                              |
+| `reason`         | The reason to log and send to the user.                                                                                       |
+| `private-notes`  | A private reason to log (not sent to the user).                                                                               |
+| `duration`       | If specified, the user will be unbanned after this duration. Banning them again with a different duration will override this. |
+| `purge-duration` | Purge the specified period of chat history from this user if applicable (up to 7 days).                                       |
+| `silent`         | If true, the user will not be notified of their ban.                                                                          |
