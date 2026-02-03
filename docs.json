@@ -28,7 +28,7 @@
                     },
                     {
                         "group": "Documentation",
-                        "pages": ["permissions", "dev-mode", "custom-messages", "premium", "cohosting"]
+                        "pages": ["permissions", "dev-mode", "custom-messages", "premium", "cohosting", "security"]
                     }
                 ]
             },

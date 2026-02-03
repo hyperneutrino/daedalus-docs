@@ -1,0 +1,29 @@
+---
+title: "Security"
+---
+
+We take security very seriously. If you find any issues that may affect security, please disclose them responsibly via
+[security@daedalusbot.xyz](mailto:security@daedalusbot.xyz). Exploiting or intentionally withholding information about security vulnerabilities will result in
+termination of access to the service.
+
+## What is a state mismatch?
+
+You may have encountered the "state mismatch" page when attempting to log in. Here's a quick summary of the login process:
+
+1. When you click "log in", we generate a `state` variable and store it in your cookies. This does not identify you in any way, it is a security measure for
+   later steps.
+2. We send you to Discord to authenticate (with the `state`), where Discord will check that you want to grant us permission to get the following:
+    1. Your username, avatar, and banner — This is part of the `identify` scope, which is necessary to determine who you are. Without this information, it is
+       impossible to provide the dashboard features.
+    2. What servers you're in — This is part of the `guilds` scope, which is necessary to get the server list in the "Manage Servers" list.
+3. If you authorize us, Discord redirects you back to us with a `token` and a `state`. Here, we check that the `state` given from the redirect is the same as
+   the `state` stored in your cookies. This is only possible if you started from our website.
+4. If your `state` matches, we exchange the `token` with Discord to get an access and refresh token for your account. This token allows us (and only us) to
+   access the authorized information.
+
+The `state` prevents a malicious third-party from gaining access to Daedalus through your account, which could allow them to read or change your settings.
+If they attempt to log you in (which they can do by simply redirecting you to the Discord OAuth login link), they would not be able to match the `state` in the
+Discord link with the `state` we track.
+
+Discord requires the developer to list every possible redirect link, so if you authorize our bot, you will only ever be redirected to our website, as it is
+impossible for a third-party to tell Discord to redirect to them (Discord will reject the request).
