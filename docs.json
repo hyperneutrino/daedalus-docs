@@ -103,7 +103,8 @@
                                     }
                                 ]
                             },
-                            { "group": "Custom Roles", "pages": ["commands/custom-role"] }
+                            { "group": "Custom Roles", "pages": ["commands/custom-role"] },
+                            { "group": "Autoresponder", "pages": ["commands/tag"] }
                         ]
                     }
                 ]
